@@ -12,11 +12,15 @@ public class PlayerCharacterMovement : MonoBehaviour
     public GameObject player;
 
     [SerializeField]
-    Rigidbody2D rigidbody;
+    new public Rigidbody2D rigidbody;
+
+    Traveller traveller;
+
+    Vector2 startPos;
 
     // Save/Load
-    [SerializeField]
-    bool isLoading = false;
+    [SerializeField,HideInInspector]
+    public bool isLoading = false;
 
     public float xPosition;
     public float yPosition;
@@ -26,12 +30,16 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     Vector2 LastSavedLocation;
 
-    public void Awake()
+    void Awake()
     {
+        startPos = transform.position;
         if (isLoading)
         {
-            player.GetComponent<GameObject>();
-            player.transform.position = LastSavedLocation;
+            Loading();
+        }
+        else
+        {
+            transform.position = startPos;
         }
     }
 
@@ -40,19 +48,21 @@ public class PlayerCharacterMovement : MonoBehaviour
     {
         if (xKey != null && yKey != null)
         {
-            isLoading = true;
             xPosition = PlayerPrefs.GetFloat(xKey);
             yPosition = PlayerPrefs.GetFloat(yKey);
             Debug.Log("xKey: " + xPosition);
             Debug.Log("yKey: " + yPosition);
             LastSavedLocation = new Vector2(xPosition, yPosition);
             Debug.Log("playerPosition: " + LastSavedLocation);
+            player.transform.position = LastSavedLocation;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isLoading);
+
         if (Input.GetKeyUp(KeyCode.K))
         {
             Save(); 
