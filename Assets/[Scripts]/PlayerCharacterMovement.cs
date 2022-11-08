@@ -53,10 +53,7 @@ public class PlayerCharacterMovement : MonoBehaviour
         {
             xPosition = PlayerPrefs.GetFloat(xKey);
             yPosition = PlayerPrefs.GetFloat(yKey);
-            Debug.Log("xKey: " + xPosition);
-            Debug.Log("yKey: " + yPosition);
             LastSavedLocation = new Vector2(xPosition, yPosition);
-            Debug.Log("playerPosition: " + LastSavedLocation);
             player.transform.position = LastSavedLocation;
         }
     }
