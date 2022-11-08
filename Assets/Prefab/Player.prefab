@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5973391515952488815}
   - component: {fileID: -3313201209291640879}
   - component: {fileID: 913610031191633093}
+  - component: {fileID: 1759230007}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -102,10 +103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcf72b52d3d74a4b8ac52ed107e2d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  MoveSpeed: 1.79
   player: {fileID: 2915056140936028665}
   rigidbody: {fileID: 16056305924026231}
-  isLoading: 0
+  animator: {fileID: 1759230007}
+  isLoading: 1
   xPosition: 0
   yPosition: 0
 --- !u!50 &16056305924026231
@@ -236,6 +238,26 @@ MonoBehaviour:
   - {x: 0.13897598, y: -0.10097358, z: 0}
   - {x: 0.14657664, y: 0.24158287, z: 0}
   - {x: -0.14277637, y: 0.2415829, z: 0}
+--- !u!95 &1759230007
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915056140936028665}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a19a4af0dda4d844b823c8dbd0f700f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4361248954583232033
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +285,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4361248954583232033}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.14, z: -10}
+  m_LocalPosition: {x: 0.01, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -297,7 +319,7 @@ Camera:
   far clip plane: 1000.48
   field of view: 60
   orthographic: 1
-  orthographic size: 0.9
+  orthographic size: 0.52
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

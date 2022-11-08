@@ -14,6 +14,9 @@ public class PlayerCharacterMovement : MonoBehaviour
     [SerializeField]
     new public Rigidbody2D rigidbody;
 
+    [SerializeField]
+    Animator animator;
+
     Traveller traveller;
 
     Vector2 startPos;
@@ -73,7 +76,32 @@ public class PlayerCharacterMovement : MonoBehaviour
 
         Vector3 oldPosition = transform.position;
 
-        rigidbody.MovePosition(oldPosition + new Vector3(xInput, yInput, 0) * MoveSpeed * Time.deltaTime);
+        Vector3 velocity = new Vector3(xInput, yInput, 0) * MoveSpeed;
+        animator.SetFloat("Speed", velocity.sqrMagnitude);
+
+        // Choose Direction
+        CardinalDirection facing = CardinalDirection.SOUTH;
+
+        if (velocity.x > 0)
+        {
+            facing = CardinalDirection.EAST;
+        }
+        else if (velocity.x < 0)
+        {
+            facing = CardinalDirection.WEST;
+        }
+        else if (velocity.y < 0)
+        {
+            facing = CardinalDirection.SOUTH;
+        }
+        else if (velocity.y > 0)
+        {
+            facing = CardinalDirection.NORTH;
+        }
+
+        animator.SetInteger("FacingDirection", (int)facing);
+
+        rigidbody.MovePosition(oldPosition + velocity * Time.deltaTime);
 
         xPosition = player.transform.position.x;
         yPosition = player.transform.position.y;
